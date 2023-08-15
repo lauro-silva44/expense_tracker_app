@@ -24,10 +24,23 @@ insert a modal bottom sheet, where using an context, and knows that flutter prov
 
 using a textField widget to insert text in a new component, NewExpense, passed inside the showBottomModalSheet
 
-### class - 108. Getting User Input on Every Keystroke    
+### class - 108. Getting User Input on Every Keystroke
 
 using the onChanged method from the textField to store a the value in a variable by passed a defined function outside the buil method as argument
 
-### class - 109. Letting flutter do the work with textEditing Controller  
+### class - 109. Letting flutter do the work with textEditing Controller
 
-using TextEditing controller 
+using TextEditing controller
+
+### class - 113. Showing a Date Picker
+
+using the function showDatePicker to present the datepicker when pressed the icon button,
+and using the dateTime variable to pass the required argumnent, such as initialDate, firstData, where was used the Date.now, acessing the year, and taking off one year, , the month and the day
+
+### class - 113. Working with "Futures" for handling Data from future
+
+learned that you can use the .then method to use the data that the future function returns, but the correct way is to use asyncronos function, and store the returned value, so that we can display the picket value on the text widget
+ 
+### class - 121. Showing & Managing "SnackBars"
+
+this class was something new, learned about the snackbar, the ScaffoldMessenger, SnackBarActions, how to insert on a list, eventhough you remove it

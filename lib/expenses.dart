@@ -17,7 +17,7 @@ class _ExpensesState extends State<Expenses> {
       title: 'Flutter Course',
       amount: 19.99,
       date: DateTime.now(),
-      category: Category.word,
+      category: Category.work,
     ),
     Expense(
       title: 'Cinena',
@@ -27,15 +27,59 @@ class _ExpensesState extends State<Expenses> {
     ),
   ];
 
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpense.add(expense);
+    });
+  }
+
+  void _removeExpense(Expense expense) {
+    final expeneIndex = _registeredExpense.indexOf(expense);
+    setState(() {
+      _registeredExpense.remove(expense);
+    });
+
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text(
+          'Expense deleted.',
+        ),
+        action: SnackBarAction(
+            label: "Undo",
+            onPressed: () {
+              setState(() {
+                _registeredExpense.insert(expeneIndex, expense);
+              });
+            }),
+      ),
+    );
+  }
+
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-        context: context, builder: (ctx) => const NewExpense());
+      isScrollControlled: true,
+      context: context,
+      builder: (ctx) => NewExpense(
+        onAddExpense: _addExpense,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text("No expense found. Start adding some"),
+    );
+
+    if (_registeredExpense.isNotEmpty) {
+      mainContent = ExpensesList(
+          expenses: _registeredExpense, onRemoveExpense: _removeExpense);
+    }
     return Scaffold(
         appBar: AppBar(
+          title: const Text("Flutter ExpenseTracker"),
           actions: [
             IconButton(
               icon: const Icon(Icons.add),
@@ -46,7 +90,7 @@ class _ExpensesState extends State<Expenses> {
         body: Column(
           children: [
             const Text("The Chart"),
-            Expanded(child: ExpensesList(expenses: _registeredExpense)),
+            Expanded(child: mainContent),
           ],
         ));
   }
