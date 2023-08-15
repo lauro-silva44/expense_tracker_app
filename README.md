@@ -15,3 +15,19 @@ in the class we createad a map that takes a category and an icon, so the ideia i
 ### class - 105. Setting an AppBar with a Title Actions
 
 in this class was introduced the appbar, and the actions, wich is a list of widget, by default, i guess it is pushed to the right corner
+
+### class - 106. Adding a modal sheet & understand context
+
+insert a modal bottom sheet, where using an context, and knows that flutter provide a universal context, and each widget has its own context
+
+### class - 107. Adding a modal sheet & understand context
+
+using a textField widget to insert text in a new component, NewExpense, passed inside the showBottomModalSheet
+
+### class - 108. Getting User Input on Every Keystroke    
+
+using the onChanged method from the textField to store a the value in a variable by passed a defined function outside the buil method as argument
+
+### class - 109. Letting flutter do the work with textEditing Controller  
+
+using TextEditing controller 
